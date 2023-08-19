@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+  }
+  
+  .container {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .margin-top {
+    margin-top: 20px;
+  }
+  
+  mat-card {
+    margin-bottom: 20px;
+  }
+
+  
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.post-card {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .post-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  img[mat-card-image] {
+    width: 100%;
+    object-fit: cover;
+    height: 200px;
+  }
+  
+  mat-card-subtitle {
+    font-size: 0.9rem;
+    color: gray;
+  }
