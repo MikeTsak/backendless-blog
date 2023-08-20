@@ -7,6 +7,16 @@
   <mat-slide-toggle (change)="toggleTheme($event)" color="accent"></mat-slide-toggle>
 </mat-toolbar>
 
+<section class="feature-section">
+  <h1 class="feature-title"><b>Big text here</b></h1>
+  <div class="feature-images">
+    <img src="path_to_image1.jpg" alt="Image 1" (click)="toggleImagePreview('path_to_image1.jpg')" />
+    <img src="path_to_image2.jpg" alt="Image 2" (click)="toggleImagePreview('path_to_image2.jpg')" />
+    <img src="path_to_image3.jpg" alt="Image 3" (click)="toggleImagePreview('path_to_image3.jpg')" />
+  </div>
+  <p class="feature-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</section>
+
 
 <div class="container">
   <mat-expansion-panel hideToggle>
@@ -26,8 +36,19 @@
       <textarea matInput [(ngModel)]="content"></textarea>
     </mat-form-field>
 
-    
     <mat-card-actions>
+      <button
+      mat-raised-button
+      color="primary"
+      uploadButton
+      [uploadComplete]="onComplete"
+      [uploadOptions]="options"
+      [uploader]="uploader"
+  >
+      Ανέβασε μια εικόνα...
+      </button>
+      <a *ngIf="uploadedFileUrl" [href]="uploadedFileUrl" target="_blank">View Uploaded Image</a>
+      
       <button mat-raised-button color="primary" (click)="addPost()">Κοινοποίησε</button>
     </mat-card-actions>
   </mat-expansion-panel>
@@ -38,9 +59,21 @@
     <mat-card-header>
       <mat-card-title>
         <p>{{ post.content }}</p>
+        <div *ngIf="post.imageUrl" (click)="toggleImagePreview(post.imageUrl)">
+          <img mat-card-image [src]="post.imageUrl" alt="Uploaded Image">
+      </div>
+      
       </mat-card-title>
+      <!-- Fullscreen Image Preview -->
+      <div *ngIf="showImagePreview" class="image-preview" (click)="toggleImagePreview('')">
+        <button class="close-preview" (click)="toggleImagePreview('')">X</button>
+        <img [src]="currentPreviewImage" alt="Full Screen Preview">
+    </div>
       <mat-card-subtitle><i>Στις: {{ post.date | date:'short' }}</i></mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>από {{ post.title }}</mat-card-content>
   </mat-card>
+  <footer class="app-footer">
+    Made by <a href="https://miketsak.gr" target="_blank" rel="noopener noreferrer">miketsak.gr</a>
+  </footer>
 </div>

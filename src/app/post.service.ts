@@ -17,6 +17,7 @@ export interface Post {
   title: string;
   content: string;
   date: Date;
+  imageUrl?: string;
 }
 
 @Injectable({

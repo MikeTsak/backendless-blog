@@ -13,6 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
+import { UploaderModule } from 'angular-uploader';
 
 
 
@@ -36,7 +37,8 @@ import { AppComponent } from './app.component';
     FlexLayoutModule,
     MatExpansionModule,
     MatSlideToggleModule,
-    MatIconModule
+    MatIconModule,
+    UploaderModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
