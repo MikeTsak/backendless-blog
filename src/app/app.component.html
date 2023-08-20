@@ -1,45 +1,45 @@
-<mat-toolbar color="primary">
-  Simple Blog
+<mat-toolbar color="primary" class="toolbar">
+  <span>Simple Blog</span>
+  <span class="spacer"></span>
+  
+  <mat-icon *ngIf="!isDarkTheme">wb_sunny</mat-icon> <!-- Sun icon for light mode -->
+  <mat-icon *ngIf="isDarkTheme">nights_stay</mat-icon> <!-- Moon icon for dark mode -->
+  <mat-slide-toggle (change)="toggleTheme($event)" color="accent"></mat-slide-toggle>
 </mat-toolbar>
 
+
 <div class="container">
-  <mat-card>      
-  <mat-card-header>
-    <mat-card-title>
-      Νέα ανάρτηση
-    </mat-card-title>
-  </mat-card-header>
-    <mat-card-content>
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Όνομα</mat-label>
-        <input matInput [(ngModel)]="title">
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Μήνυμα</mat-label>
-        <textarea matInput [(ngModel)]="content"></textarea>
-      </mat-form-field>
-    </mat-card-content>
-    
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Νέα ανάρτηση
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Όνομα</mat-label>
+      <input matInput [(ngModel)]="title">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Μήνυμα</mat-label>
+      <textarea matInput [(ngModel)]="content"></textarea>
+    </mat-form-field>
+
     <mat-card-actions>
       <button mat-raised-button color="primary" (click)="addPost()">Κοινοποίησε</button>
     </mat-card-actions>
-  </mat-card>
+  </mat-expansion-panel>
 
   <mat-divider class="margin-top"></mat-divider>
   
   <mat-card *ngFor="let post of posts" class="margin-top post-card">
-      <!-- <img mat-card-image src="https://via.placeholder.com/600x300" alt="Placeholder Image"> -->
-      <mat-card-header>
+    <mat-card-header>
       <mat-card-title>
         <p>{{ post.content }}</p>
       </mat-card-title>
+      <mat-card-subtitle><i>Στις: {{ post.date | date:'short' }}</i></mat-card-subtitle>
     </mat-card-header>
-      <mat-card-header>
-        <mat-card-content>από {{ post.title }}</mat-card-content>
-        <mat-card-subtitle><i>Στις: {{ post.date | date:'short' }}</i></mat-card-subtitle>
-      </mat-card-header>
-      <!-- <mat-card-actions>
-          <button mat-button>Read More</button>
-      </mat-card-actions> -->
+    <mat-card-content>από {{ post.title }}</mat-card-content>
   </mat-card>
 </div>

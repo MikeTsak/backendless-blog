@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PostService, Post } from './post.service';
 
+
 interface ApiResponse {
   record: Post[];
   metadata: {
@@ -21,6 +22,14 @@ export class AppComponent {
   title = '';
   content = '';
   posts: Post[] = [];
+  isDarkTheme = false;
+
+  toggleTheme(event: any) {
+    this.isDarkTheme = event.checked;
+    console.log(this.isDarkTheme);
+    const theme = this.isDarkTheme ? 'dark-mode' : 'light-theme';
+    document.body.className = theme;
+  }
 
   constructor(private postService: PostService) {
     this.loadPosts();

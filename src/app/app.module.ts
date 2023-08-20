@@ -9,6 +9,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 import { AppComponent } from './app.component';
@@ -27,7 +32,11 @@ import { AppComponent } from './app.component';
     MatInputModule,
     MatFormFieldModule,
     MatDividerModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule,
+    MatExpansionModule,
+    MatSlideToggleModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
