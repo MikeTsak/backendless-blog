@@ -65,7 +65,7 @@ body {
       padding: 8px;
     }
   }
-  
+  spacer 
   .toolbar {
     display: flex;
     align-items: center; /* Vertically align everything in the center */
