@@ -13,13 +13,17 @@ A simple and responsive blog application built with Angular and Angular Material
 ```bash
 git clone https://github.com/MikeTsak/backendless-blog.git
 ```
-2. ```cd REPO_NAME
-npm install```
+2. 
+```bash
+cd backendless-blog
+npm install
+```
 
 3. Add your API KEYS
 
 4. Run the application:
-```ng serve
+```bash
+ng serve
 ```
 
 Visit http://localhost:4200/ in your browser to see the app in action!
