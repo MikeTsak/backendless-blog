@@ -24,9 +24,11 @@ export interface Post {
 })
 export class PostService {
   private apiUrl = environment.apiUrl;
+  private apiUrlPUT = environment.apiUrlPUT;
   private headers = new HttpHeaders({
     'X-Master-Key': environment.apiMasterKey,
-    'X-Access-Key': environment.apiAccessKey
+    'X-Access-Key': environment.apiAccessKey,
+    'Content-Type': 'application/json'
   });
 
   constructor(private http: HttpClient) {}
@@ -35,7 +37,26 @@ export class PostService {
     return this.http.get<ApiResponse>(this.apiUrl, { headers: this.headers });
   }
 
-  addPost(post: Post): Observable<Post> {
-    return this.http.post<Post>(this.apiUrl, post, { headers: this.headers });
-  }
+addPost(post: Post): Observable<Post[]> {
+    // Step 1: Fetch existing data
+    return new Observable<Post[]>(observer => {
+      this.getPosts().subscribe(data => {
+        // Step 2: Append the new post to the existing list
+        const updatedPosts = [...data.record, post];
+
+        // Step 3: Update the bin with the updatedPosts array
+        this.http.put<Post[]>(this.apiUrlPUT, updatedPosts, { headers: this.headers }).subscribe(
+          () => {
+            observer.next(updatedPosts);
+            observer.complete();
+          },
+          error => {
+            observer.error(error);
+          }
+        );
+      });
+    });
+}
+
+
 }

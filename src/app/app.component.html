@@ -3,23 +3,25 @@
 </mat-toolbar>
 
 <div class="container">
-  <mat-card>
+  <mat-card>      
+  <mat-card-header>
     <mat-card-title>
-      New Post
+      Νέα ανάρτηση
     </mat-card-title>
+  </mat-card-header>
     <mat-card-content>
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Your Name</mat-label>
+        <mat-label>Όνομα</mat-label>
         <input matInput [(ngModel)]="title">
       </mat-form-field>
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Content</mat-label>
+        <mat-label>Μήνυμα</mat-label>
         <textarea matInput [(ngModel)]="content"></textarea>
       </mat-form-field>
     </mat-card-content>
     
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="addPost()">Add Post</button>
+      <button mat-raised-button color="primary" (click)="addPost()">Κοινοποίησε</button>
     </mat-card-actions>
   </mat-card>
 
@@ -27,12 +29,14 @@
   
   <mat-card *ngFor="let post of posts" class="margin-top post-card">
       <!-- <img mat-card-image src="https://via.placeholder.com/600x300" alt="Placeholder Image"> -->
-      <mat-card-content>
-        <p>{{ post.content }}</p>
-      </mat-card-content>
       <mat-card-header>
-        <mat-card-title>{{ post.title }}</mat-card-title>
-        <mat-card-subtitle><i>Posted on: {{ post.date | date:'short' }}</i></mat-card-subtitle>
+      <mat-card-title>
+        <p>{{ post.content }}</p>
+      </mat-card-title>
+    </mat-card-header>
+      <mat-card-header>
+        <mat-card-content>από {{ post.title }}</mat-card-content>
+        <mat-card-subtitle><i>Στις: {{ post.date | date:'short' }}</i></mat-card-subtitle>
       </mat-card-header>
       <!-- <mat-card-actions>
           <button mat-button>Read More</button>

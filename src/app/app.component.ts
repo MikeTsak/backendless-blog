@@ -39,11 +39,12 @@ export class AppComponent {
         content: this.content,
         date: new Date()
       };
-      this.postService.addPost(post).subscribe(newPost => {
-        this.posts.push(newPost);
+      this.postService.addPost(post).subscribe(response => {
+        this.posts = response; // update the local list with the entire updated list from the server
         this.title = '';
         this.content = '';
       });
     }
   }
+
 }
